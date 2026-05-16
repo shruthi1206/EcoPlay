@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Deforestation Game - EcoPlay</title>
+  <link rel="stylesheet" href="deforestation-game.css" />
+</head>
+<body>
+
+  <header class="game-header">
+    <h1>🌳 Deforestation Challenge</h1>
+    <p>Protect forests and restore the Earth!</p>
+  </header>
+
+  <main class="game-container">
+    <div class="stats">
+      <div>Score: <span id="score">0</span></div>
+      <div>Question: <span id="progress">1 / 15</span></div>
+    </div>
+
+    <div class="progress-bar">
+      <div id="progress-bar-fill"></div>
+    </div>
+
+    <div class="scenario-card">
+      <div class="icon" id="scenario-icon">🌳</div>
+      <h2 id="question-title">Loading...</h2>
+      <p id="question-description">Please wait...</p>
+    </div>
+
+    <div id="options-container" class="options-container"></div>
+
+    <p id="feedback-message"></p>
+  </main>
+
+  <script src="deforestation-game.js"></script>
+</body>
+</html>

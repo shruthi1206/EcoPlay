@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>EcoPlay - Login & Signup</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Arial, sans-serif;
+      min-height: 100vh;
+      background: linear-gradient(135deg, #0f172a, #14532d, #0ea5e9);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+    }
+
+    .auth-container {
+      width: 100%;
+      max-width: 460px;
+      background: rgba(255, 255, 255, 0.12);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      border-radius: 24px;
+      padding: 35px;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.35);
+      color: white;
+    }
+
+    .logo {
+      text-align: center;
+      font-size: 2.4rem;
+      margin-bottom: 10px;
+    }
+
+    .subtitle {
+      text-align: center;
+      opacity: 0.9;
+      margin-bottom: 30px;
+      line-height: 1.6;
+    }
+
+    .tabs {
+      display: flex;
+      background: rgba(255, 255, 255, 0.08);
+      border-radius: 14px;
+      padding: 5px;
+      margin-bottom: 25px;
+    }
+
+    .tab {
+      flex: 1;
+      padding: 12px;
+      border: none;
+      border-radius: 10px;
+      background: transparent;
+      color: white;
+      cursor: pointer;
+      font-weight: 600;
+      transition: 0.3s;
+    }
+
+    .tab.active {
+      background: linear-gradient(135deg, #22c55e, #16a34a);
+      box-shadow: 0 6px 20px rgba(34, 197, 94, 0.35);
+    }
+
+    .input-group {
+      margin-bottom: 18px;
+    }
+
+    .input-group label {
+      display: block;
+      margin-bottom: 8px;
+      font-weight: 600;
+      font-size: 0.95rem;
+    }
+
+    .input-group input {
+      width: 100%;
+      box-sizing: border-box;
+      padding: 14px;
+      border-radius: 12px;
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      background: rgba(255, 255, 255, 0.08);
+      color: white;
+      outline: none;
+      font-size: 1rem;
+    }
+
+    .input-group input::placeholder {
+      color: rgba(255, 255, 255, 0.65);
+    }
+
+    .auth-btn {
+      width: 100%;
+      padding: 14px;
+      border: none;
+      border-radius: 12px;
+      background: linear-gradient(135deg, #22c55e, #16a34a);
+      color: white;
+      font-size: 1rem;
+      font-weight: bold;
+      cursor: pointer;
+      transition: 0.3s;
+      margin-top: 10px;
+    }
+
+    .auth-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 25px rgba(34, 197, 94, 0.35);
+    }
+
+    .message {
+      text-align: center;
+      margin-top: 18px;
+      font-weight: 600;
+      min-height: 24px;
+    }
+
+    .footer-text {
+      text-align: center;
+      margin-top: 20px;
+      opacity: 0.8;
+      font-size: 0.9rem;
+    }
+
+    .hidden {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+
+<div class="auth-container">
+  <div class="logo">🌍 EcoPlay</div>
+  <p class="subtitle">
+    Learn. Play. Save the Planet.<br>
+    Sign up or log in to continue your environmental journey.
+  </p>
+
+  <div class="tabs">
+    <button class="tab active" onclick="switchTab('login')">Login</button>
+    <button class="tab" onclick="switchTab('signup')">Sign Up</button>
+  </div>
+
+  <!-- Login Form -->
+  <div id="loginForm">
+    <div class="input-group">
+      <label>Email</label>
+      <input type="email" id="loginEmail" placeholder="Enter your email" />
+    </div>
+
+    <div class="input-group">
+      <label>Password</label>
+      <input type="password" id="loginPassword" placeholder="Enter your password" />
+    </div>
+
+    <button class="auth-btn" onclick="login()">🚀 Login</button>
+  </div>
+
+  <!-- Signup Form -->
+  <div id="signupForm" class="hidden">
+    <div class="input-group">
+      <label>Full Name</label>
+      <input type="text" id="signupName" placeholder="Enter your full name" />
+    </div>
+
+    <div class="input-group">
+      <label>Email</label>
+      <input type="email" id="signupEmail" placeholder="Enter your email" />
+    </div>
+
+    <div class="input-group">
+      <label>Password</label>
+      <input type="password" id="signupPassword" placeholder="Create a password" />
+    </div>
+
+    <button class="auth-btn" onclick="signup()">✨ Create Account</button>
+  </div>
+
+  <div id="message" class="message"></div>
+
+  <p class="footer-text">
+    ♻️ Gamified Environmental Learning Platform
+  </p>
+</div>
+
+<script>
+  const tabs = document.querySelectorAll('.tab');
+  const loginForm = document.getElementById('loginForm');
+  const signupForm = document.getElementById('signupForm');
+  const message = document.getElementById('message');
+
+  function switchTab(mode) {
+    tabs.forEach(tab => tab.classList.remove('active'));
+
+    if (mode === 'login') {
+      tabs[0].classList.add('active');
+      loginForm.classList.remove('hidden');
+      signupForm.classList.add('hidden');
+    } else {
+      tabs[1].classList.add('active');
+      signupForm.classList.remove('hidden');
+      loginForm.classList.add('hidden');
+    }
+
+    message.textContent = '';
+    message.style.color = 'white';
+  }
+
+  function signup() {
+    const name = document.getElementById('signupName').value.trim();
+    const email = document.getElementById('signupEmail').value.trim();
+    const password = document.getElementById('signupPassword').value.trim();
+
+    if (!name || !email || !password) {
+      showMessage('Please fill all fields.', '#fca5a5');
+      return;
+    }
+
+    const users = JSON.parse(localStorage.getItem('ecoUsers')) || [];
+
+    const existingUser = users.find(user => user.email === email);
+    if (existingUser) {
+      showMessage('Account already exists. Please log in.', '#fbbf24');
+      return;
+    }
+
+    users.push({ name, email, password });
+    localStorage.setItem('ecoUsers', JSON.stringify(users));
+
+    showMessage('Account created successfully! Please log in.', '#86efac');
+
+    document.getElementById('signupName').value = '';
+    document.getElementById('signupEmail').value = '';
+    document.getElementById('signupPassword').value = '';
+
+    setTimeout(() => switchTab('login'), 1500);
+  }
+
+  function login() {
+    const email = document.getElementById('loginEmail').value.trim();
+    const password = document.getElementById('loginPassword').value.trim();
+
+    if (!email || !password) {
+      showMessage('Please enter email and password.', '#fca5a5');
+      return;
+    }
+
+    const users = JSON.parse(localStorage.getItem('ecoUsers')) || [];
+
+    const user = users.find(
+      u => u.email === email && u.password === password
+    );
+
+    if (!user) {
+      showMessage('Invalid email or password.', '#fca5a5');
+      return;
+    }
+
+    localStorage.setItem('ecoUser', user.name);
+    localStorage.setItem('ecoUserEmail', user.email);
+
+    showMessage('Login successful! Redirecting...', '#86efac');
+
+    setTimeout(() => {
+      window.location.href = 'dashboard.html';
+    }, 1000);
+  }
+
+  function showMessage(text, color) {
+    message.textContent = text;
+    message.style.color = color;
+  }
+</script>
+
+</body>
+</html>

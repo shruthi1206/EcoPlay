@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>EcoPlay - Explore Topics</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <header>
+    <nav class="navbar">
+      <h2 class="logo">EcoPlay</h2>
+
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="topics.html">Explore Topics</a></li>
+        <li><a href="quiz.html">Quiz</a></li>
+        <li><a href="leaderboard.html">Leaderboard</a></li>
+        <li><a href="dashboard.html">Dashboard</a></li>
+      </ul>
+
+      <a href="login.html" class="btn">Login</a>
+    </nav>
+  </header>
+
+  <section class="topics">
+    <h2>Explore Topics</h2>
+
+    <div class="topic-container">
+
+  <!-- 1. Waste Management -->
+  <div class="topic-card">
+    <h3>♻️ Waste Management</h3>
+    <p>Learn waste segregation, recycling, and responsible disposal.</p>
+    <button onclick="openVideo(0)">Watch Video</button>
+    <button onclick="openGame(0)">Play Game</button>
+    
+
+  </div>
+
+  <!-- 2. Water Conservation -->
+  <div class="topic-card">
+    <h3>💧 Water Conservation</h3>
+    <p>Understand practical ways to save and protect water resources.</p>
+    <button onclick="openVideo(1)">Watch Video</button>
+    <button onclick="openGame(1)">Play Game</button>
+    
+  </div>
+
+  <!-- 3. Climate Change -->
+  <div class="topic-card">
+    <h3>🌡️ Climate Change</h3>
+    <p>Explore global warming, greenhouse gases, and climate action.</p>
+    <button onclick="openVideo(2)">Watch Video</button>
+    <button onclick="openGame(2)">Play Game</button>
+   
+  </div>
+
+  <!-- 4. Plastic Pollution -->
+  <div class="topic-card">
+    <h3>🚯 Plastic Pollution</h3>
+    <p>Learn how plastic waste affects ecosystems and marine life.</p>
+    <button onclick="openVideo(3)">Watch Video</button>
+    <button onclick="openGame(3)">Play Game</button>
+   
+  </div>
+
+  <!-- 5. Biodiversity and Wildlife Conservation -->
+  <div class="topic-card">
+    <h3>🌿 Biodiversity & Wildlife Conservation</h3>
+    <p>Discover ecosystems, endangered species, and habitat protection.</p>
+    <button onclick="openVideo(4)">Watch Video</button>
+    <button onclick="openGame(4)">Play Game</button>
+
+    
+  </div>
+
+  <!-- 6. Deforestation and Forest Conservation -->
+  <div class="topic-card">
+    <h3>🌳 Deforestation & Forest Conservation</h3>
+    <p>Understand forest loss, afforestation, and sustainable land use.</p>
+    <button onclick="openVideo(5)">Watch Video</button>
+    <button onclick="openGame(5)">Play Game</button>
+   
+  </div>
+
+</div>
+<!-- Add these lines at the very bottom of your topics.html -->
+
+  </section>
+
+  <footer>
+    <p>© 2026 EcoPlay | Gamified Environmental Learning Platform</p>
+  </footer>
+
+  <!-- IMPORTANT: This line makes Watch Video and Play Game work -->
+  <script src="script.js"></script>
+
+</body>
+</html>

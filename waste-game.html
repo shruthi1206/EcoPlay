@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>EcoPlay - Smart Waste Management Simulator</title>
+  <link rel="stylesheet" href="waste-game.css" />
+</head>
+<body>
+
+  <header class="game-header">
+    <div class="header-content">
+      <h1>♻ Smart Waste Management Simulator</h1>
+      <p>Classify each waste item into the correct bin and become a Sustainability Expert.</p>
+    </div>
+    <a href="index.html" class="back-link">⬅ Back to EcoPlay</a>
+  </header>
+
+  <section class="dashboard">
+    <div class="stat-card">
+      <span class="label">Score</span>
+      <span id="score">0</span>
+    </div>
+
+    <div class="stat-card">
+      <span class="label">Progress</span>
+      <span id="progress">1 / 15</span>
+    </div>
+
+    <div class="stat-card">
+      <span class="label">Time Left</span>
+      <span id="timer">60s</span>
+    </div>
+
+    <div class="stat-card">
+      <span class="label">Accuracy</span>
+      <span id="accuracy">0%</span>
+    </div>
+  </section>
+
+  <div class="progress-wrapper">
+    <div id="progress-bar"></div>
+  </div>
+
+  <section class="item-section">
+    <div class="item-card">
+      <div id="item-emoji" class="item-emoji">🧴</div>
+      <h2 id="item-name">Plastic Bottle</h2>
+      <p>Select the correct waste category.</p>
+    </div>
+  </section>
+
+  <section class="bins-container">
+    <div class="bin wet-bin" data-type="wet">
+      <div class="bin-icon">🟢</div>
+      <h3>Organic Waste</h3>
+      <p>Food scraps and biodegradable materials</p>
+    </div>
+
+    <div class="bin dry-bin" data-type="dry">
+      <div class="bin-icon">🔵</div>
+      <h3>Dry Waste</h3>
+      <p>Paper, cardboard, and packaging</p>
+    </div>
+
+    <div class="bin recycle-bin" data-type="recycle">
+      <div class="bin-icon">♻️</div>
+      <h3>Recycling</h3>
+      <p>Plastic bottles, cans, and glass</p>
+    </div>
+  </section>
+
+  <section class="feedback-section">
+    <div id="feedback-message"></div>
+  </section>
+
+  <div id="result-modal" class="modal hidden">
+    <div class="modal-content">
+      <h2>🏆 Simulation Completed</h2>
+      <p id="final-badge"></p>
+      <p id="final-score"></p>
+      <p id="final-accuracy"></p>
+
+      <button onclick="restartGame()" class="primary-btn">
+        🔄 Play Again
+      </button>
+
+      <a href="index.html" class="secondary-btn">
+        ⬅ Return to EcoPlay
+      </a>
+    </div>
+  </div>
+
+  <script src="waste-game.js"></script>
+</body>
+</html>

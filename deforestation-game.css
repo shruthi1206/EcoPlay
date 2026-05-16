@@ -1,0 +1,131 @@
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: linear-gradient(135deg, #0f172a, #14532d);
+  color: white;
+  min-height: 100vh;
+}
+
+.game-header {
+  text-align: center;
+  padding: 30px 20px;
+}
+
+.game-header h1 {
+  margin: 0;
+  font-size: 2.5rem;
+}
+
+.game-header p {
+  margin-top: 10px;
+  font-size: 1.1rem;
+  opacity: 0.9;
+}
+
+.game-container {
+  max-width: 900px;
+  margin: auto;
+  padding: 20px;
+}
+
+.stats {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 15px;
+  font-weight: bold;
+  font-size: 1.1rem;
+}
+
+.progress-bar {
+  width: 100%;
+  height: 12px;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 20px;
+  overflow: hidden;
+  margin-bottom: 25px;
+}
+
+#progress-bar-fill {
+  height: 100%;
+  width: 0%;
+  background: #22c55e;
+  transition: width 0.4s ease;
+}
+
+.scenario-card {
+  background: rgba(255, 255, 255, 0.12);
+  padding: 30px;
+  border-radius: 20px;
+  text-align: center;
+  margin-bottom: 25px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.25);
+}
+
+.icon {
+  font-size: 4rem;
+  margin-bottom: 10px;
+}
+
+.scenario-card h2 {
+  margin: 10px 0;
+  font-size: 2rem;
+}
+
+.scenario-card p {
+  font-size: 1.1rem;
+  opacity: 0.95;
+}
+
+.options-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 15px;
+}
+
+.option-card {
+  background: rgba(255, 255, 255, 0.12);
+  padding: 18px;
+  border-radius: 15px;
+  cursor: pointer;
+  text-align: center;
+  transition: 0.3s ease;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.option-card:hover {
+  background: rgba(34, 197, 94, 0.35);
+  transform: translateY(-4px);
+}
+
+.option-card h3 {
+  margin: 0;
+  font-size: 1rem;
+}
+
+#feedback-message {
+  margin-top: 20px;
+  text-align: center;
+  font-size: 1.2rem;
+  font-weight: bold;
+  min-height: 30px;
+}
+
+@media (max-width: 768px) {
+  .options-container {
+    grid-template-columns: 1fr;
+  }
+
+  .game-header h1 {
+    font-size: 2rem;
+  }
+
+  .scenario-card h2 {
+    font-size: 1.5rem;
+  }
+
+  .stats {
+    flex-direction: column;
+    gap: 8px;
+    text-align: center;
+  }
+}

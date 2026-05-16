@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>EcoPlay Certificate</title>
+
+<style>
+body {
+    margin: 0;
+    padding: 20px;
+    font-family: 'Georgia', serif;
+    background: linear-gradient(135deg, #0f172a, #14532d, #0ea5e9);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+.certificate-container {
+    width: 100%;
+    max-width: 1000px;
+    background: white;
+    border-radius: 20px;
+    padding: 30px;
+    box-shadow: 0 25px 60px rgba(0,0,0,0.35);
+}
+
+.certificate {
+    border: 12px solid #16a34a;
+    border-radius: 16px;
+    padding: 60px 40px;
+    text-align: center;
+    position: relative;
+    background: linear-gradient(to bottom, #ffffff, #f0fdf4);
+}
+
+.certificate::before {
+    content: "🌍";
+    position: absolute;
+    top: 20px;
+    left: 30px;
+    font-size: 3rem;
+}
+
+.certificate::after {
+    content: "🏆";
+    position: absolute;
+    top: 20px;
+    right: 30px;
+    font-size: 3rem;
+}
+
+.logo {
+    font-size: 3rem;
+    margin-bottom: 10px;
+}
+
+.platform {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #16a34a;
+    letter-spacing: 2px;
+}
+
+.title {
+    font-size: 3rem;
+    font-weight: bold;
+    color: #1e3a8a;
+    margin: 25px 0 10px;
+}
+
+.subtitle {
+    font-size: 1.3rem;
+    color: #555;
+    margin-bottom: 30px;
+}
+
+.student-name {
+    font-size: 3rem;
+    font-weight: bold;
+    color: #14532d;
+    border-bottom: 3px solid #16a34a;
+    display: inline-block;
+    padding: 0 20px 10px;
+    margin: 20px 0;
+}
+
+.description {
+    font-size: 1.2rem;
+    color: #333;
+    line-height: 1.8;
+    max-width: 800px;
+    margin: 30px auto;
+}
+
+.stats {
+    margin: 30px 0;
+    font-size: 1.1rem;
+    color: #444;
+}
+
+.signature-section {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 60px;
+    text-align: center;
+}
+
+.signature {
+    width: 220px;
+}
+
+.signature-line {
+    border-top: 2px solid #333;
+    margin-bottom: 8px;
+    padding-top: 8px;
+    font-weight: bold;
+}
+
+.button-section {
+    text-align: center;
+    margin-top: 25px;
+}
+
+.btn {
+    display: inline-block;
+    margin: 10px;
+    padding: 14px 28px;
+    border: none;
+    border-radius: 12px;
+    background: linear-gradient(135deg, #22c55e, #16a34a);
+    color: white;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.btn:hover {
+    opacity: 0.9;
+}
+
+.locked {
+    background: white;
+    padding: 60px 30px;
+    border-radius: 20px;
+    text-align: center;
+    max-width: 700px;
+}
+
+.locked h1 {
+    color: #dc2626;
+    font-size: 2.5rem;
+}
+
+.locked p {
+    font-size: 1.2rem;
+    color: #555;
+    line-height: 1.8;
+}
+
+@media print {
+    body {
+        background: white;
+        padding: 0;
+    }
+
+    .button-section {
+        display: none;
+    }
+
+    .certificate-container {
+        box-shadow: none;
+        border-radius: 0;
+        max-width: 100%;
+    }
+}
+
+@media (max-width: 768px) {
+    .title {
+        font-size: 2.2rem;
+    }
+
+    .student-name {
+        font-size: 2rem;
+    }
+
+    .signature-section {
+        flex-direction: column;
+        gap: 30px;
+        align-items: center;
+    }
+}
+</style>
+</head>
+<body>
+
+<div id="content"></div>
+
+<script>
+const username = localStorage.getItem('ecoUser') || 'Student';
+const leaderboard = JSON.parse(localStorage.getItem('ecoLeaderboard')) || [];
+
+// Get all unique topics completed by the current user
+const userEntries = leaderboard.filter(entry => entry.name === username);
+const completedTopics = new Set();
+
+let totalPoints = 0;
+
+userEntries.forEach(entry => {
+    if (entry.topic) completedTopics.add(entry.topic);
+    totalPoints += entry.score || 0;
+});
+
+const topicsCompleted = completedTopics.size;
+const currentDate = new Date().toLocaleDateString('en-IN', {
+    day: '2-digit',
+    month: 'long',
+    year: 'numeric'
+});
+
+const content = document.getElementById('content');
+
+// Show certificate only after completing all 6 topics
+if (topicsCompleted < 6) {
+    content.innerHTML = `
+        <div class="locked">
+            <h1>🔒 Certificate Locked</h1>
+            <p>
+                Complete all <strong>6 environmental topics</strong> to unlock your
+                EcoPlay Certificate of Completion.
+            </p>
+            <p>
+                Topics Completed: <strong>${topicsCompleted}/6</strong>
+            </p>
+            <a href="dashboard.html" class="btn">⬅ Back to Dashboard</a>
+        </div>
+    `;
+} else {
+    content.innerHTML = `
+        <div class="certificate-container">
+            <div class="certificate">
+                <div class="logo">🌍</div>
+                <div class="platform">ECOPLAY</div>
+
+                <div class="title">Certificate of Completion</div>
+
+                <div class="subtitle">
+                    This is proudly presented to
+                </div>
+
+                <div class="student-name">${username}</div>
+
+                <div class="description">
+                    for successfully completing all six environmental learning modules,
+                    participating in educational games, and demonstrating outstanding
+                    performance in quizzes and sustainability challenges.
+                </div>
+
+                <div class="stats">
+                    <strong>Total Points Earned:</strong> ${totalPoints}<br>
+                    <strong>Topics Completed:</strong> 6/6<br>
+                    <strong>Date of Completion:</strong> ${currentDate}
+                </div>
+
+                <div class="signature-section">
+                    <div class="signature">
+                        <div class="signature-line">Project Guide</div>
+                    </div>
+
+                    <div class="signature">
+                        <div class="signature-line">EcoPlay Platform</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="button-section">
+                <button class="btn" onclick="window.print()">
+                    🖨 Print / Save as PDF
+                </button>
+
+                <a href="dashboard.html" class="btn">
+                    ⬅ Back to Dashboard
+                </a>
+            </div>
+        </div>
+    `;
+}
+</script>
+
+</body>
+</html>
